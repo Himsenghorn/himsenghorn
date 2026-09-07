@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="km" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ហ៊ឹម សេងហ៊ន (Him Senghorn) - Graphic Designer | Video Editor | Motion Graphics</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* ពណ៌មូលដ្ឋានសម្រាប់ Dark Mode (Default) */
+        :root {
+            --bg-body: #080d1a;
+            --bg-card: #111a30;
+            --bg-card-hover: #172442;
+            --bg-alt: #0a1122;
+            --bg-footer: #050811;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --nav-bg: rgba(8, 13, 26, 0.88);
+            --input-bg: #080d1a;
+            --primary-blue: #0088ff;
+            --primary-cyan: #00d2ff;
+            --primary-purple: #8b5cf6;
+            --quote-bg: linear-gradient(135deg, rgba(0, 136, 255, 0.08), rgba(139, 92, 246, 0.08));
+        }
+
+        /* ពណ៌មូលដ្ឋានសម្រាប់ Light Mode */
+        [data-theme="light"] {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --bg-alt: #eef2f7;
+            --bg-footer: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: #cbd5e1;
+            --nav-bg: rgba(255, 255, 255, 0.94);
+            --input-bg: #ffffff;
+            --primary-blue: #0070f3;
+            --primary-cyan: #0284c7;
+            --quote-bg: linear-gradient(135deg, rgba(0, 112, 243, 0.07), rgba(139, 92, 246, 0.07));
+        }
+
+        body {
+            font-family: 'Kantumruy Pro', 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+
+        /* ការប្តូរពណ៌ Text និង Component នៅពេល Light Mode */
+        [data-theme="light"] .text-white,
+        [data-theme="light"] .text-light {
+            color: #0f172a !important;
+        }
+        [data-theme="light"] .text-secondary {
+            color: #64748b !important;
+        }
+        [data-theme="light"] .bg-dark {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+        }
+        [data-theme="light"] .form-control,
+        [data-theme="light"] .form-select {
+            background-color: var(--input-bg) !important;
+            color: #0f172a !important;
+            border-color: var(--border-color) !important;
+        }
+
+        /* ស្ទាយអក្សរ Gradient */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism Navbar */
+        .custom-navbar {
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        /* =========================================
+           NAV LINKS STYLING & ACTIVE COLOR CHANGE
+           ========================================= */
+        .nav-menu-link {
+            position: relative;
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.25s ease, transform 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-menu-link:hover {
+            color: var(--primary-cyan) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-menu-link::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            width: 0;
+            height: 2.5px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-cyan));
+            transform: translateX(-50%);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            box-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        .nav-menu-link:hover::after {
+            width: 40%;
+            opacity: 0.7;
+        }
+
+        .nav-menu-link.active {
+            color: var(--primary-cyan) !important;
+            font-weight: 700 !important;
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        .nav-menu-link.active::after {
+            width: 75%;
+            opacity: 1;
+        }
+
+        [data-theme="light"] .nav-menu-link {
+            color: #475569 !important;
+        }
+        [data-theme="light"] .nav-menu-link:hover,
+        [data-theme="light"] .nav-menu-link.active {
+            color: #0070f3 !important;
+            text-shadow: none;
+        }
+        [data-theme="light"] .nav-menu-link.active::after {
+            background: #0070f3;
+            box-shadow: 0 0 8px rgba(0, 112, 243, 0.35);
+        }
+
+        /* Custom Buttons */
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+            color: #ffffff !important;
+            font-weight: 700;
+            border: none;
+            border-radius: 50rem;
+            padding: 0.65rem 1.6rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 136, 255, 0.28);
+        }
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 136, 255, 0.4);
+            color: #ffffff !important;
+        }
+
+        .btn-outline-custom {
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-main);
+            border-radius: 50rem;
+            padding: 0.65rem 1.4rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-custom:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary-cyan);
+            color: var(--primary-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* ប៊ូតុងប្តូរភាសា (Language Switcher Segmented Control) */
+        .lang-switch-box {
+            display: inline-flex;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50rem;
+            padding: 2px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .lang-switch-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 50rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .lang-switch-btn.active {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+            color: #ffffff !important;
+            box-shadow: 0 2px 10px rgba(0, 136, 255, 0.35);
+        }
+
+        /* ប៊ូតុងប្តូរ Theme (Light / Dark Mode Toggle) */
+        .theme-toggle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .theme-toggle-btn:hover {
+            transform: scale(1.08) rotate(15deg);
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+        .theme-icon-rotate {
+            animation: themeSpin 0.4s ease;
+        }
+        @keyframes themeSpin {
+            0% { transform: scale(0.6) rotate(-90deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        /* =========================================
+           FLOATING TELEGRAM BUTTON
+           ========================================= */
+        .floating-telegram-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: #0088cc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1050;
+            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.55), 0 0 25px rgba(0, 136, 204, 0.35);
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: telegramPulse 2.4s infinite;
+        }
+        .floating-telegram-btn:hover {
+            transform: scale(1.12) translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 136, 204, 0.8), 0 0 35px rgba(0, 136, 204, 0.6);
+        }
+        .floating-telegram-btn .telegram-inner-disk {
+            width: 38px;
+            height: 38px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .floating-telegram-btn:hover .telegram-inner-disk {
+            transform: rotate(12deg) scale(1.05);
+        }
+        .floating-telegram-btn .telegram-plane-icon {
+            color: #0088cc;
+            font-size: 19px;
+            transform: translate(-1px, 1px);
+        }
+        .telegram-tooltip {
+            position: absolute;
+            right: 74px;
+            background: rgba(8, 13, 26, 0.95);
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 50rem;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 136, 204, 0.45);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .floating-telegram-btn:hover .telegram-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        [data-theme="light"] .telegram-tooltip {
+            background: rgba(255, 255, 255, 0.96);
+            color: #0f172a;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes telegramPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.65), 0 8px 25px rgba(0, 136, 204, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 18px rgba(0, 136, 204, 0), 0 8px 25px rgba(0, 136, 204, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 136, 204, 0), 0 8px 25px rgba(0, 136, 204, 0.4);
+            }
+        }
+
+        /* Hero Canvas Background */
+        #particleCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Hero Card Styles */
+        .hero-avatar-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 2rem;
+            padding: 1.25rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease;
+        }
+        .hero-avatar-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Pulse glow */
+        .pulse-badge {
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
+        }
+
+        /* Section Cards */
+        .custom-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            transition: all 0.35s ease;
+            height: 100%;
+        }
+        .custom-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 210, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 136, 255, 0.12);
+        }
+
+        /* Timeline Items */
+        .timeline-box {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+        .timeline-box::before {
+            content: '';
+            position: absolute;
+            left: -0.55rem;
+            top: 0.2rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--primary-cyan);
+            border: 3px solid var(--bg-body);
+        }
+
+        /* Portfolio Cards */
+        .portfolio-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary-cyan);
+            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.2);
+        }
+        .portfolio-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .portfolio-card:hover img {
+            transform: scale(1.06);
+        }
+
+        /* Filter buttons */
+        .filter-btn {
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-muted);
+            padding: 0.45rem 1.2rem;
+            border-radius: 50rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-blue);
+            color: #ffffff !important;
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 15px rgba(0, 136, 255, 0.3);
+        }
+
+        /* Skill Progress Bar */
+        .progress-wrapper {
+            margin-bottom: 1.2rem;
+        }
+        .custom-progress {
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        .custom-progress-bar {
+            height: 100%;
+            border-radius: 1rem;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-cyan));
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.1, 0.5, 0.1, 1);
+        }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--primary-cyan);
+            margin-left: 4px;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Live API Quote Card */
+        .quote-api-card {
+            background: var(--quote-bg);
+            border: 1px dashed rgba(0, 210, 255, 0.45);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- របារម៉ឺនុយខាងលើ (Navbar ជាមួយ Active Click Color Indicator) -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar" id="mainNav">
+        <div class="container py-1">
+            <!-- Logo & Brand -->
+            <a class="navbar-brand d-flex align-items-center text-decoration-none" href="#home">
+                <div class="d-inline-flex justify-content-center align-items-center rounded-3 text-white fw-bold me-2" style="width: 40px; height: 40px; background: linear-gradient(135deg, #0088ff, #00d2ff);">
+                    HS
+                </div>
+                <div>
+                    <span class="fw-bold fs-6 d-block text-white leading-1">ហ៊ឹម សេងហ៊ន</span>
+                    <small class="text-info text-uppercase" style="font-size: 10px; letter-spacing: 1px;" data-i18n="nav_role">HIM SENGHORN</small>
+                </div>
+            </a>
+
+            <!-- Mobile Actions (Language EN/KH + Theme Toggle + Hamburger) -->
+            <div class="d-flex align-items-center gap-2 d-lg-none">
+                <!-- Mobile Language Switcher (EN / KH) -->
+                <div class="lang-switch-box">
+                    <button class="lang-switch-btn" onclick="setLanguage('en')" id="langBtnMobileEN">EN</button>
+                    <button class="lang-switch-btn active" onclick="setLanguage('km')" id="langBtnMobileKH">KH</button>
+                </div>
+
+                <button class="theme-toggle-btn" id="themeToggleBtnMobile" title="ប្តូរ Light/Dark" aria-label="Toggle Light/Dark Theme">
+                    <i class="fa-solid fa-sun text-warning fs-6" id="themeIconMobile"></i>
+                </button>
+                
+                <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars fs-4" style="color: var(--text-main);"></i>
+                </button>
+            </div>
+
+            <!-- Menu items: Home, About Me, Experience, Skills, Portfolio, Contact -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0" id="navMenuList">
+                    <li class="nav-item">
+                        <a class="nav-link nav-menu-link active" href="#home" data-i18n="nav_home">ទំព័រដើម</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-menu-link" href="#about" data-i18n="nav_about">អំពីខ្ញុំ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-menu-link" href="#experience" data-i18n="nav_experience">បទពិសោធន៍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-menu-link" href="#skills" data-i18n="nav_skills">ជំនាញ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-menu-link" href="#portfolio" data-i18n="nav_portfolio">ស្នាដៃ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-menu-link" href="#contact" data-i18n="nav_contact">ទំនាក់ទំនង</a>
+                    </li>
+                </ul>
+
+                <!-- Desktop Action Buttons: EN/KH, Light/Dark, Behance, Telegram Direct, Contact -->
+                <div class="d-flex align-items-center gap-2">
+                    
+                    <!-- ប៊ូតុងប្តូរភាសា EN / KH លើ Desktop -->
+                    <div class="lang-switch-box me-1" title="ប្តូរភាសា / Switch Language">
+                        <button class="lang-switch-btn" onclick="setLanguage('en')" id="langBtnDesktopEN">EN</button>
+                        <button class="lang-switch-btn active" onclick="setLanguage('km')" id="langBtnDesktopKH">KH</button>
+                    </div>
+
+                    <!-- ប៊ូតុងប្តូរ Light/Dark Mode លើ Desktop -->
+                    <button class="theme-toggle-btn d-none d-lg-inline-flex" id="themeToggleBtn" title="ប្តូរ Light/Dark Mode" aria-label="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-sun text-warning fs-5" id="themeIcon"></i>
+                    </button>
+
+                    <a href="https://t.me/Himsenghorn" target="_blank" rel="noopener noreferrer" class="btn btn-outline-custom py-2 px-3 fs-6">
+                        <i class="fa-brands fa-telegram text-info me-1"></i> @Himsenghorn
+                    </a>
+                    
+                    <a href="#contact" class="btn btn-gradient py-2 px-3 fs-6" data-i18n="nav_btn_contact">
+                        ទាក់ទងខ្ញុំ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ផ្នែក HERO SECTION ជាមួយ Animation Particles -->
+    <section id="home" class="position-relative d-flex align-items-center min-vh-100 pt-5 overflow-hidden">
+        <!-- Interactive Canvas -->
+        <canvas id="particleCanvas"></canvas>
+
+        <div class="container position-relative py-5" style="z-index: 2;">
+            <div class="row align-items-center g-5">
+                
+                <!-- អត្ថបទណែនាំ -->
+                <div class="col-lg-7 text-center text-lg-start" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3 border border-info border-opacity-25" style="background: rgba(0, 210, 255, 0.1);">
+                        <span class="rounded-circle bg-success pulse-badge" style="width: 8px; height: 8px;"></span>
+                        <span class="text-info fw-semibold" style="font-size: 0.8rem;" data-i18n="hero_badge">ត្រៀមខ្លួនរួចរាល់សម្រាប់ការងារថ្មីៗ & Projects</span>
+                    </div>
+
+                    <h5 class="text-secondary text-uppercase fw-semibold" style="letter-spacing: 2px;" data-i18n="hero_welcome">សូមស្វាគមន៍មកកាន់ Portfolio របស់ខ្ញុំ</h5>
+                    
+                    <h1 class="display-4 fw-black text-white mb-2">
+                        <span data-i18n="hero_name_prefix">ខ្ញុំបាទឈ្មោះ</span> <span class="text-info">ហ៊ឹម សេងហ៊ន</span> <span class="fs-4 text-secondary d-block d-sm-inline">(HIM SENGHORN)</span>
+                    </h1>
+
+                    <!-- Typewriter Text Effect -->
+                    <div class="fs-3 fw-bold text-light mb-3">
+                        <span data-i18n="hero_skills_label">ជំនាញ:</span> <span class="gradient-text" id="typewriter"></span><span class="typewriter-cursor">&nbsp;</span>
+                    </div>
+
+                    <p class="text-secondary lead fs-6 mb-4 pe-lg-5" data-i18n="hero_description">
+                        អ្នករចនាប្រកបដោយភាពច្នៃប្រឌិត និងភាពសកម្មខ្ពស់ មានបទពិសោធន៍លើផ្នែក <strong>Graphic Design, Photography, Video Editing</strong> និង <strong>Motion Graphics</strong>។ ជំនាញច្បាស់លាស់លើកម្មវិធី Adobe Suite និងបង្កើតស្នាដៃ Visuals ដែលមានគុណភាពកម្រិតខ្ពស់។
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mb-4">
+                        <a href="#portfolio" class="btn btn-gradient">
+                            <span data-i18n="hero_btn_work">ទស្សនាស្នាដៃរបស់ខ្ញុំ</span> <i class="fa-solid fa-arrow-right ms-2 fs-6"></i>
+                        </a>
+                        <a href="https://t.me/Himsenghorn" target="_blank" rel="noopener noreferrer" class="btn btn-outline-custom">
+                            <i class="fa-brands fa-telegram text-info me-2"></i> @Himsenghorn
+                        </a>
+                    </div>
+
+                    <!-- Counter Animations -->
+                    <div class="row g-3 pt-3 border-top border-secondary border-opacity-25 max-w-lg">
+                        <div class="col-4 text-center text-lg-start">
+                            <h3 class="fw-bold text-white mb-0"><span class="counter" data-target="120">0</span>+</h3>
+                            <small class="text-secondary" style="font-size: 12px;" data-i18n="stat_projects">គម្រោងជោគជ័យ</small>
+                        </div>
+                        <div class="col-4 text-center text-lg-start">
+                            <h3 class="fw-bold text-white mb-0"><span class="counter" data-target="45">0</span>+</h3>
+                            <small class="text-secondary" style="font-size: 12px;" data-i18n="stat_clients">អតិថិជនពេញចិត្ត</small>
+                        </div>
+                        <div class="col-4 text-center text-lg-start">
+                            <h3 class="fw-bold text-white mb-0"><span class="counter" data-target="3">0</span>+ <span data-i18n="stat_years">ឆ្នាំ</span></h3>
+                            <small class="text-secondary" style="font-size: 12px;" data-i18n="stat_exp">បទពិសោធន៍</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- កាត Profile ខាងស្តាំ -->
+                <div class="col-lg-5 text-center" data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="hero-avatar-card mx-auto" style="max-width: 380px;">
+                        <div class="rounded-4 overflow-hidden position-relative p-4" style="background: linear-gradient(180deg, rgba(0, 136, 255, 0.12) 0%, rgba(0, 210, 255, 0.05) 100%); border: 1px solid var(--border-color);">
+                            
+                            <!-- Profile Avatar -->
+                            <div class="position-relative mx-auto mb-3" style="width: 140px; height: 140px;">
+                                <div class="w-100 h-100 rounded-circle p-1" style="background: linear-gradient(135deg, var(--primary-cyan), var(--primary-blue));">
+                                    <div class="w-100 h-100 rounded-circle d-flex align-items-center justify-content-center text-info fw-black display-5" style="background: var(--bg-body);">
+                                        HS
+                                    </div>
+                                </div>
+                                <span class="position-absolute bottom-0 end-0 bg-success border border-2 rounded-circle p-2" style="border-color: var(--bg-card)!important;" title="Online"></span>
+                            </div>
+
+                            <h4 class="text-white fw-bold mb-0">ហ៊ឹម សេងហ៊ន</h4>
+                            <p class="text-secondary small mb-1">Him Senghorn</p>
+                            <p class="text-info fw-semibold mb-2" style="font-size: 0.9rem;" data-i18n="card_subtitle">Visual & Motion Designer</p>
+                            <span class="badge bg-primary bg-opacity-25 text-info rounded-pill px-3 py-1 mb-3">Target Creative</span>
+
+                            <div class="p-3 rounded-3 text-start border border-secondary border-opacity-25" style="background: var(--bg-body);">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-brands fa-telegram text-info me-2"></i>
+                                    <a href="https://t.me/Himsenghorn" target="_blank" rel="noopener noreferrer" class="text-info text-decoration-none fw-bold" style="font-size: 13px;">@Himsenghorn</a>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-solid fa-phone text-success me-2"></i>
+                                    <span class="text-light" style="font-size: 12px;">+855 10 632 467</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa-solid fa-location-dot text-info me-2"></i>
+                                    <span class="text-light" style="font-size: 12px;" data-i18n="card_location">Phnom Penh, Cambodia</span>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-brands fa-behance text-primary me-2"></i>
+                                    <a href="https://behance.net/himsenghorn" target="_blank" rel="noopener noreferrer" class="text-secondary text-decoration-none" style="font-size: 12px;">behance.net/himsenghorn</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ផ្នែក LIVE API: គំនិតច្នៃប្រឌិតប្រចាំថ្ងៃ (Daily Creative Inspiration via Fetch API) -->
+    <section class="py-4 position-relative" style="background: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="quote-api-card" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <span class="badge bg-info text-dark fw-bold"><i class="fa-solid fa-bolt me-1"></i> LIVE API</span>
+                            <span class="text-info fw-semibold" style="font-size: 13px;" data-i18n="api_quote_badge">គំនិតបំផុសច្នៃប្រឌិតប្រចាំថ្ងៃ (Creative Inspiration Quote)</span>
+                        </div>
+                        <p class="fs-6 fst-italic text-light mb-1" id="quoteText">
+                            <i class="fa-solid fa-quote-left text-info opacity-50 me-2"></i>
+                            <span id="apiQuoteContent">Loading inspiration from API...</span>
+                            <i class="fa-solid fa-quote-right text-info opacity-50 ms-2"></i>
+                        </p>
+                        <small class="text-secondary fw-semibold" id="apiQuoteAuthor">— HIM SENGHORN Studio</small>
+                    </div>
+                    <div class="col-md-3 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-outline-custom py-2 px-3 fs-6" id="fetchQuoteBtn" onclick="fetchInspirationalQuote()">
+                            <i class="fa-solid fa-rotate me-1" id="quoteSpinIcon"></i> <span data-i18n="api_quote_btn">គំនិតថ្មី (New Quote)</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ផ្នែកអំពីខ្ញុំ (About Section) -->
+    <section id="about" class="py-5">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                
+                <div class="col-lg-5" data-aos="fade-right">
+                    <span class="text-info fw-bold text-uppercase" style="letter-spacing: 2px; font-size: 0.85rem;" data-i18n="about_badge">ប្រវត្តិរូបសង្ខេប</span>
+                    <h2 class="display-6 fw-bold text-white mb-3" data-i18n="about_title">
+                        ផ្សំផ្គុំសិល្បៈ <span class="gradient-text">និងបច្ចេកវិទ្យា</span>
+                    </h2>
+                    <p class="text-secondary leading-relaxed mb-4" data-i18n="about_desc">
+                        ខ្ញុំជាអ្នកច្នៃប្រឌិតដែលមានជំនាញច្បាស់លាស់ទាំងលើការរចនារូបភាព (Graphic Design), ការកាត់តវីដេអូកម្រិតភាពយន្ត (Cinematic Editing) និងចលនា Motion Graphics ដ៏រស់រវើក។ គោលដៅរបស់ខ្ញុំគឺជួយលើកកម្ពស់ Brand របស់លោកអ្នកឱ្យមានភាពទាក់ទាញបំផុត។
+                    </p>
+
+                    <!-- ចំណូលចិត្ត (Hobbies) -->
+                    <h6 class="text-light fw-bold text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 1px;" data-i18n="hobbies_title">ចំណូលចិត្តផ្ទាល់ខ្លួន (Hobbies)</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge border text-light py-2 px-3 rounded-pill" style="background: var(--bg-card); border-color: var(--border-color)!important;">
+                            <i class="fa-solid fa-camera text-info me-1"></i> Photography
+                        </span>
+                        <span class="badge border text-light py-2 px-3 rounded-pill" style="background: var(--bg-card); border-color: var(--border-color)!important;">
+                            <i class="fa-solid fa-plane text-primary me-1"></i> Traveling
+                        </span>
+                        <span class="badge border text-light py-2 px-3 rounded-pill" style="background: var(--bg-card); border-color: var(--border-color)!important;">
+                            <i class="fa-solid fa-music text-purple me-1" style="color:#c084fc;"></i> Music
+                        </span>
+                        <span class="badge border text-light py-2 px-3 rounded-pill" style="background: var(--bg-card); border-color: var(--border-color)!important;">
+                            <i class="fa-solid fa-book-open text-success me-1"></i> Reading
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="custom-card">
+                                <div class="text-info fs-3 mb-2"><i class="fa-brands fa-telegram"></i></div>
+                                <h6 class="text-secondary text-uppercase mb-1" style="font-size: 11px;">Telegram ផ្ទាល់</h6>
+                                <a href="https://t.me/Himsenghorn" target="_blank" rel="noopener noreferrer" class="text-white fw-bold text-decoration-none hover-cyan">@Himsenghorn</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="custom-card">
+                                <div class="text-primary fs-3 mb-2"><i class="fa-solid fa-phone"></i></div>
+                                <h6 class="text-secondary text-uppercase mb-1" style="font-size: 11px;" data-i18n="contact_phone_lbl">លេខទូរស័ព្ទ</h6>
+                                <h6 class="text-white fw-bold mb-0">+855 10 632 467 / 088 873 3506</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="custom-card">
+                                <div class="text-info fs-3 mb-2"><i class="fa-solid fa-envelope"></i></div>
+                                <h6 class="text-secondary text-uppercase mb-1" style="font-size: 11px;" data-i18n="contact_email_lbl">អ៊ីមែល</h6>
+                                <h6 class="text-white fw-bold mb-0 text-truncate">himsenghorn05@gmail.com</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="custom-card">
+                                <div class="text-success fs-3 mb-2"><i class="fa-solid fa-location-dot"></i></div>
+                                <h6 class="text-secondary text-uppercase mb-1" style="font-size: 11px;" data-i18n="contact_location_lbl">ទីតាំងបច្ចុប្បន្ន</h6>
+                                <h6 class="text-white fw-bold mb-0" data-i18n="contact_location_val">Phnom Penh, Cambodia</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ផ្នែកបទពិសោធន៍ការងារ និងការសិក្សា (Timeline) -->
+    <section id="experience" class="py-5" style="background: var(--bg-alt);">
+        <div class="container py-4">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase" style="letter-spacing: 2px; font-size: 0.85rem;" data-i18n="exp_section_badge">ប្រវត្តិការងារ & ការអប់រំ</span>
+                <h2 class="display-6 fw-bold text-white" data-i18n="exp_section_title">បទពិសោធន៍ និងការសិក្សា</h2>
+            </div>
+
+            <div class="row g-5">
+                <!-- បទពិសោធន៍ការងារ -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h4 class="text-white fw-bold mb-4 pb-2 border-bottom border-secondary border-opacity-25">
+                        <i class="fa-solid fa-briefcase text-info me-2"></i> <span data-i18n="exp_work_heading">បទពិសោធន៍ការងារ (Work Experience)</span>
+                    </h4>
+
+                    <!-- Target Creative -->
+                    <div class="timeline-box">
+                        <span class="badge bg-primary bg-opacity-25 text-info rounded-pill px-3 py-1 mb-2">2025 – 2026</span>
+                        <h5 class="text-white fw-bold mb-1" data-i18n="exp_tc_role">Graphic Designer / Video Editor / Motion Graphics</h5>
+                        <h6 class="text-info fw-semibold mb-2">Target Creative</h6>
+                        <ul class="text-secondary small mb-0 ps-3" data-i18n="exp_tc_list">
+                            <li>រចនា Posters, Banners, Logos និងសម្ភារៈទីផ្សារ (Marketing Materials)</li>
+                            <li>ថតរូបភាព និងវីដេអូសម្រាប់កម្មវិធី (Events & Promotions)</li>
+                            <li>កាត់តវីដេអូ និងបង្កើត Motion Graphics សម្រាប់ Social Media</li>
+                            <li>សហការជាមួយក្រុមការងារដើម្បីបង្កើត Creative Concepts ថ្មីៗ</li>
+                        </ul>
+                    </div>
+
+                    <!-- ST3 Company -->
+                    <div class="timeline-box mb-0">
+                        <span class="badge bg-secondary bg-opacity-25 text-light rounded-pill px-3 py-1 mb-2">2024 – 2024</span>
+                        <h5 class="text-white fw-bold mb-1" data-i18n="exp_st3_role">Graphic Design Intern</h5>
+                        <h6 class="text-info fw-semibold mb-2">ST3 Company Co., Ltd.</h6>
+                        <ul class="text-secondary small mb-0 ps-3" data-i18n="exp_st3_list">
+                            <li>ជួយរចនា Posters, Logos និង Print Materials សម្រាប់ក្រុមហ៊ុន</li>
+                            <li>កែសម្រួលរូបភាព (Edit Photos) និងជួយគាំទ្រការផលិតវីដេអូ</li>
+                            <li>រៀបចំ File សម្រាប់បោះពុម្ព (Printing) និងការផ្សព្វផ្សាយអនឡាញ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ប្រវត្តិនៃការសិក្សា -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h4 class="text-white fw-bold mb-4 pb-2 border-bottom border-secondary border-opacity-25">
+                        <i class="fa-solid fa-graduation-cap text-primary me-2"></i> <span data-i18n="exp_edu_heading">ប្រវត្តិនៃការសិក្សា (Education)</span>
+                    </h4>
+
+                    <!-- SETTEC Institute -->
+                    <div class="timeline-box">
+                        <span class="badge bg-info bg-opacity-25 text-info rounded-pill px-3 py-1 mb-2">2023 – Present</span>
+                        <h5 class="text-white fw-bold mb-1" data-i18n="edu_settec_degree">Bachelor of IT & Multimedia (3rd Year)</h5>
+                        <h6 class="text-light fw-semibold mb-2">SETTEC Institute, Phnom Penh</h6>
+                        <p class="text-secondary small mb-0" data-i18n="edu_settec_desc">
+                            កំពុងបន្តការសិក្សាថ្នាក់បរិញ្ញាបត្រឆ្នាំទី ៣ លើជំនាញបច្ចេកវិទ្យាព័ត៌មានវិទ្យា និងពហុព័ត៌មាន (IT & Multimedia) ពង្រឹងការយល់ដឹងទាំងផ្នែករចនា និងប្រព័ន្ធបច្ចេកវិទ្យា។
+                        </p>
+                    </div>
+
+                    <!-- វិទ្យាល័យ -->
+                    <div class="timeline-box mb-0">
+                        <span class="badge bg-secondary bg-opacity-25 text-light rounded-pill px-3 py-1 mb-2">2011 – 2022</span>
+                        <h5 class="text-white fw-bold mb-1" data-i18n="edu_school_degree">High School Diploma</h5>
+                        <h6 class="text-light fw-semibold mb-2">Hun Sen Kompong Popil High School</h6>
+                        <p class="text-secondary small mb-0" data-i18n="edu_school_desc">
+                            បានបញ្ចប់ការសិក្សាកម្រិតមធ្យមសិក្សាទុតិយភូមិដោយជោគជ័យ។
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ផ្នែកជំនាញបច្ចេកទេស (Skills Section with Animated Progress Bars) -->
+    <section id="skills" class="py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase" style="letter-spacing: 2px; font-size: 0.85rem;" data-i18n="skills_section_badge">ជំនាញឯកទេស</span>
+                <h2 class="display-6 fw-bold text-white" data-i18n="skills_section_title">កម្រិតជំនាញបច្ចេកទេស</h2>
+            </div>
+
+            <div class="row g-4">
+                
+                <!-- 1. DESIGN -->
+                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="custom-card">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="fa-solid fa-palette text-primary fs-4"></i>
+                            <h5 class="text-white fw-bold mb-0">DESIGN</h5>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Adobe Photoshop</span>
+                                <span class="text-info fw-bold">90%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="90%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Adobe Illustrator</span>
+                                <span class="text-info fw-bold">88%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="88%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper mb-0">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Adobe InDesign</span>
+                                <span class="text-info fw-bold">80%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. VIDEO & MOTION -->
+                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="custom-card">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="fa-solid fa-video text-info fs-4"></i>
+                            <h5 class="text-white fw-bold mb-0">VIDEO & MOTION</h5>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Adobe Premiere Pro</span>
+                                <span class="text-info fw-bold">92%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="92%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Adobe After Effects</span>
+                                <span class="text-info fw-bold">85%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="85%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>DaVinci Resolve</span>
+                                <span class="text-info fw-bold">82%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="82%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper mb-0">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>CapCut Pro</span>
+                                <span class="text-info fw-bold">95%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. PHOTOGRAPHY -->
+                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="custom-card">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="fa-solid fa-camera-retro text-purple fs-4" style="color:#c084fc;"></i>
+                            <h5 class="text-white fw-bold mb-0">PHOTOGRAPHY</h5>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Portrait Photography</span>
+                                <span class="text-info fw-bold">88%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="88%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Event Photography</span>
+                                <span class="text-info fw-bold">85%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="85%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Lighting Setup</span>
+                                <span class="text-info fw-bold">80%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="80%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper mb-0">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Photo Editing / Retouch</span>
+                                <span class="text-info fw-bold">90%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. WEB & IT (ស្របតាម CV និង image_6cb424) -->
+                <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="custom-card">
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <i class="fa-solid fa-code text-success fs-4"></i>
+                            <h5 class="text-white fw-bold mb-0">WEB & IT</h5>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>HTML, CSS, JavaScript</span>
+                                <span class="text-info fw-bold">80%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="80%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>Bootstrap Framework</span>
+                                <span class="text-info fw-bold">82%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="82%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-wrapper mb-0">
+                            <div class="d-flex justify-content-between small text-light mb-1">
+                                <span>WordPress CMS</span>
+                                <span class="text-info fw-bold">85%</span>
+                            </div>
+                            <div class="custom-progress">
+                                <div class="custom-progress-bar" data-progress="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ផ្នែកស្នាដៃការងារ (Portfolio Showcase with Interactive Filters) -->
+    <section id="portfolio" class="py-5" style="background: var(--bg-alt);">
+        <div class="container py-4">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4" data-aos="fade-up">
+                <div>
+                    <span class="text-info fw-bold text-uppercase" style="letter-spacing: 2px; font-size: 0.85rem;" data-i18n="port_section_badge">ស្នាដៃការងារ</span>
+                    <h2 class="display-6 fw-bold text-white mb-0" data-i18n="port_section_title">គម្រោងច្នៃប្រឌិត (Projects)</h2>
+                </div>
+                <!-- Filter Buttons -->
+                <div class="d-flex flex-wrap gap-2 mt-3 mt-md-0" id="portfolioFilterContainer">
+                    <button class="filter-btn active" data-filter="all" data-i18n="filter_all">ទាំងអស់</button>
+                    <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+                    <button class="filter-btn" data-filter="video">Video Editing</button>
+                    <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+                    <button class="filter-btn" data-filter="photo">Photography</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Grid Items -->
+            <div class="row g-4" id="portfolioGrid">
+
+                <!-- គម្រោង ១: Graphic -->
+                <div class="col-md-6 col-lg-4 portfolio-item graphic" data-aos="fade-up">
+                    <div class="portfolio-card" onclick="openProjectModal('Brand Identity & Marketing Posters', 'Graphic Design', 'ការរចនាផ្ទាំង Poster ពាណិជ្ជកម្ម និង Branding សម្រាប់ក្រុមហ៊ុន Target Creative ដោយប្រើប្រាស់ Adobe Photoshop & Illustrator។', 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80', 'Adobe Photoshop, Illustrator')">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80" alt="[រូបភាព Poster Design]">
+                            <span class="position-absolute top-0 start-0 m-3 badge bg-primary px-3 py-1">Graphic</span>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="text-white fw-bold mb-1">Marketing Posters & Banners</h5>
+                            <p class="text-secondary small mb-0">Posters • Logos • Print Ready</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- គម្រោង ២: Video Editing -->
+                <div class="col-md-6 col-lg-4 portfolio-item video" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-card" onclick="openProjectModal('Event Promo & Social Media Video', 'Video Editing', 'កាត់តវីដេអូផ្សព្វផ្សាយកម្មវិធី Event ដោយរួមបញ្ចូល Sound Design, Dynamic Cuts និង Color Grading ជាមួយ Premiere Pro & DaVinci Resolve។', 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80', 'Premiere Pro, DaVinci Resolve')">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="[រូបភាព Video Editing]">
+                            <span class="position-absolute top-0 start-0 m-3 badge bg-info text-dark fw-bold px-3 py-1">Video</span>
+                            <div class="position-absolute top-50 start-50 translate-middle">
+                                <div class="rounded-circle bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white" style="width: 50px; height: 50px;">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="text-white fw-bold mb-1">Event Highlight & Promo Video</h5>
+                            <p class="text-secondary small mb-0">Videography • Color Grading</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- គម្រោង ៣: Motion Graphics -->
+                <div class="col-md-6 col-lg-4 portfolio-item motion" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-card" onclick="openProjectModal('Animated Logo & Title Sequence', 'Motion Graphics', 'ចលនា Logo និង Animated Titles សម្រាប់វីដេអូ YouTube & Facebook Reels ដោយប្រើ After Effects យ៉ាងរស់រវើក។', 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80', 'Adobe After Effects')">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="[រូបភាព Motion Graphics]">
+                            <span class="position-absolute top-0 start-0 m-3 badge bg-purple text-white px-3 py-1" style="background:#8b5cf6;">Motion</span>
+                            <div class="position-absolute top-50 start-50 translate-middle">
+                                <div class="rounded-circle bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white" style="width: 50px; height: 50px;">
+                                    <i class="fa-solid fa-film"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="text-white fw-bold mb-1">Logo Reveal & Social Motion</h5>
+                            <p class="text-secondary small mb-0">After Effects • Intro/Outro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- គម្រោង ៤: Photography -->
+                <div class="col-md-6 col-lg-4 portfolio-item photo" data-aos="fade-up">
+                    <div class="portfolio-card" onclick="openProjectModal('Portrait & Event Photography Session', 'Photography', 'ការថតរូបបែប Portrait និង Event ផ្ទាល់ដោយរៀបចំភ្លើង Lighting Setup ប្រកបដោយវិជ្ជាជីវៈ និងកែសម្រួលពន្លឺពណ៌ដោយ Photoshop។', 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80', 'Camera Setup, Lighting, Photoshop')">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" alt="[រូបភាព Photography]">
+                            <span class="position-absolute top-0 start-0 m-3 badge bg-success px-3 py-1">Photo</span>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="text-white fw-bold mb-1">Portrait & Event Photo Session</h5>
+                            <p class="text-secondary small mb-0">Lighting Setup • Photo Retouching</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- គម្រោង ៥: Graphic Print -->
+                <div class="col-md-6 col-lg-4 portfolio-item graphic" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-card" onclick="openProjectModal('Print Materials & Brochure Layout', 'Graphic Design', 'រចនាឯកសារបោះពុម្ព Brochure, Packaging និង Catalog ដោយប្រើប្រាស់ Adobe InDesign & Illustrator សម្រាប់ក្រុមហ៊ុន ST3 Company។', 'https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80', 'Adobe InDesign, Illustrator')">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=800&q=80" alt="[រូបភាព Print Materials]">
+                            <span class="position-absolute top-0 start-0 m-3 badge bg-primary px-3 py-1">Graphic</span>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="text-white fw-bold mb-1">Brochure & Print Publishing</h5>
+                            <p class="text-secondary small mb-0">InDesign • Print Ready Preparation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- គម្រោង ៦: Video TikTok -->
+                <div class="col-md-6 col-lg-4 portfolio-item video" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-card" onclick="openProjectModal('Fast-Paced TikTok & Reels Editing', 'Video Editing', 'កាត់តវីដេអូទម្រង់ខ្លី 9:16 បែប Viral Reels ដោយប្រើ CapCut & Premiere Pro ជាមួយ Subtitles និង Sound FX គួរឱ្យទាក់ទាញ។', 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80', 'Premiere Pro, CapCut')">
+                        <div class="position-relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80" alt="[រូបភាព Short Videos]">
+                            <span class="position-absolute top-0 start-0 m-3 badge bg-info text-dark fw-bold px-3 py-1">Video</span>
+                            <div class="position-absolute top-50 start-50 translate-middle">
+                                <div class="rounded-circle bg-dark bg-opacity-75 d-flex align-items-center justify-content-center text-white" style="width: 50px; height: 50px;">
+                                    <i class="fa-solid fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h5 class="text-white fw-bold mb-1">Short-Form Reels & TikTok Videos</h5>
+                            <p class="text-secondary small mb-0">CapCut • Fast Paced • Dynamic Subtitles</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Behance Link -->
+            <div class="text-center mt-5">
+                <a href="https://behance.net/himsenghorn" target="_blank" rel="noopener noreferrer" class="btn btn-outline-custom px-4 py-3">
+                    <i class="fa-brands fa-behance text-info me-2 fs-5"></i>
+                    <span data-i18n="port_behance_btn">ទស្សនាស្នាដៃបន្ថែមទាំងអស់លើ Behance</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square ms-2 small"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ផ្នែកទំនាក់ទំនង (Contact Section) -->
+    <section id="contact" class="py-5">
+        <div class="container py-4">
+            <div class="row g-5">
+                
+                <!-- ព័ត៌មានទំនាក់ទំនង -->
+                <div class="col-lg-5" data-aos="fade-right">
+                    <span class="text-info fw-bold text-uppercase" style="letter-spacing: 2px; font-size: 0.85rem;" data-i18n="contact_badge">ទំនាក់ទំនង</span>
+                    <h2 class="display-6 fw-bold text-white mb-3" data-i18n="contact_title">ទាក់ទងមកកាន់ខ្ញុំ</h2>
+                    <p class="text-secondary mb-4" data-i18n="contact_desc">
+                        សូមទាក់ទងមកខ្ញុំដើម្បីពិភាក្សាអំពីគម្រោងរចនា Graphic Design, កាត់តវីដេអូ ឬ Motion Graphics។ ខ្ញុំត្រៀមខ្លួនស្វាគមន៍ជានិច្ច!
+                    </p>
+
+                    <div class="d-flex flex-column gap-3">
+                        <!-- Telegram Card ផ្លូវការ -->
+                        <a href="https://t.me/Himsenghorn" target="_blank" rel="noopener noreferrer" class="custom-card text-decoration-none p-3 d-flex align-items-center gap-3 border-info border-opacity-50">
+                            <div class="rounded-3 bg-info bg-opacity-25 text-info d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                <i class="fa-brands fa-telegram fs-4 text-info"></i>
+                            </div>
+                            <div>
+                                <small class="text-secondary d-block" data-i18n="contact_telegram_lbl">តេលេក្រាម (Telegram)</small>
+                                <span class="text-white fw-bold">@Himsenghorn</span>
+                            </div>
+                        </a>
+
+                        <!-- Phone -->
+                        <a href="tel:+85510632467" class="custom-card text-decoration-none p-3 d-flex align-items-center gap-3">
+                            <div class="rounded-3 bg-primary bg-opacity-25 text-info d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                <i class="fa-solid fa-phone fs-5"></i>
+                            </div>
+                            <div>
+                                <small class="text-secondary d-block" data-i18n="contact_phone_lbl">លេខទូរស័ព្ទ (Phone)</small>
+                                <span class="text-white fw-bold">+855 10 632 467 / 088 873 3506</span>
+                            </div>
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:himsenghorn05@gmail.com" class="custom-card text-decoration-none p-3 d-flex align-items-center gap-3">
+                            <div class="rounded-3 bg-primary bg-opacity-25 text-info d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                <i class="fa-solid fa-envelope fs-5"></i>
+                            </div>
+                            <div>
+                                <small class="text-secondary d-block" data-i18n="contact_email_lbl">អ៊ីមែល (Email)</small>
+                                <span class="text-white fw-bold">himsenghorn05@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <!-- Location -->
+                        <div class="custom-card p-3 d-flex align-items-center gap-3">
+                            <div class="rounded-3 bg-success bg-opacity-25 text-success d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                <i class="fa-solid fa-location-dot fs-5"></i>
+                            </div>
+                            <div>
+                                <small class="text-secondary d-block" data-i18n="contact_location_lbl">ទីតាំង (Location)</small>
+                                <span class="text-white fw-bold" data-i18n="contact_location_val">Phnom Penh, Cambodia</span>
+                            </div>
+                        </div>
+
+                        <!-- Behance -->
+                        <a href="https://behance.net/himsenghorn" target="_blank" rel="noopener noreferrer" class="custom-card text-decoration-none p-3 d-flex align-items-center gap-3">
+                            <div class="rounded-3 bg-primary bg-opacity-25 text-info d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                                <i class="fa-brands fa-behance fs-5"></i>
+                            </div>
+                            <div>
+                                <small class="text-secondary d-block">Online Portfolio</small>
+                                <span class="text-white fw-bold">behance.net/himsenghorn</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Form ផ្ញើសារ -->
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="custom-card p-4 p-md-5">
+                        <h4 class="text-white fw-bold mb-1" data-i18n="form_title">ផ្ញើសារមកកាន់ ហ៊ឹម សេងហ៊ន (HIM SENGHORN)</h4>
+                        <p class="text-secondary small mb-4" data-i18n="form_subtitle">សូមបំពេញព័ត៌មានខាងក្រោមដើម្បីពិភាក្សាគម្រោងតាម Telegram</p>
+
+                        <!-- Form ផ្ញើទៅ Telegram @Himsenghorn ផ្ទាល់ -->
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label text-light small" data-i18n="form_label_name">ឈ្មោះរបស់អ្នក *</label>
+                                    <input type="text" id="senderName" required class="form-control" placeholder="John Doe">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-light small" data-i18n="form_label_contact">លេខទូរស័ព្ទ ឬ អ៊ីមែល *</label>
+                                    <input type="text" id="senderContact" required class="form-control" placeholder="012 xxx xxx / mail@example.com">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-light small" data-i18n="form_label_service">សេវាកម្មដែលអ្នកត្រូវការ</label>
+                                <select class="form-select" id="senderService">
+                                    <option value="Graphic Design (Posters, Logos, Banners)">Graphic Design (Posters, Logos, Banners)</option>
+                                    <option value="Video Editing & Color Grading">Video Editing & Color Grading (Commercials, Reels)</option>
+                                    <option value="Motion Graphics">Motion Graphics (Logo Animation, Titles)</option>
+                                    <option value="Photography">Photography (Portrait, Event)</option>
+                                    <option value="Full Creative Package">Full Creative Package (Graphic + Video + Motion)</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label text-light small" data-i18n="form_label_details">ព័ត៌មានលម្អិតនៃគម្រោង *</label>
+                                <textarea rows="4" id="senderMessage" required class="form-control" placeholder="Write your project details here..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-gradient w-100 py-3 d-flex align-items-center justify-content-center gap-2">
+                                <i class="fa-brands fa-telegram fs-5"></i> <span data-i18n="form_btn_submit">ផ្ញើសារចូល Telegram (@Himsenghorn)</span>
+                            </button>
+                        </form>
+
+                        <!-- Toast Alert Message -->
+                        <div id="formSuccessToast" class="alert alert-success mt-3 d-none align-items-center" role="alert">
+                            <i class="fa-solid fa-circle-check fs-4 me-3 text-success"></i>
+                            <div>
+                                <strong class="d-block" data-i18n="form_toast_success">សារត្រូវបានរៀបចំរួចរាល់!</strong>
+                                <small data-i18n="form_toast_desc">ប្រព័ន្ធកំពុងបើក Chat ទៅកាន់ Telegram @Himsenghorn ផ្ទាល់។</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ជើងទំព័រ (Footer) -->
+    <footer class="py-4 border-top" style="background: var(--bg-footer); border-color: var(--border-color)!important;">
+        <div class="container text-center text-secondary small">
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2">
+                <div>
+                    © 2026 <strong class="text-light">ហ៊ឹម សេងហ៊ន - HIM SENGHORN</strong>. <span data-i18n="footer_rights">រក្សាសិទ្ធិគ្រប់យ៉ាង។</span>
+                </div>
+                <div class="d-flex gap-3">
+                    <a href="#home" class="text-secondary text-decoration-none" data-i18n="nav_home">ទំព័រដើម</a>
+                    <a href="#about" class="text-secondary text-decoration-none" data-i18n="nav_about">អំពីខ្ញុំ</a>
+                    <a href="#skills" class="text-secondary text-decoration-none" data-i18n="nav_skills">ជំនាញ</a>
+                    <a href="#portfolio" class="text-secondary text-decoration-none" data-i18n="nav_portfolio">ស្នាដៃ</a>
+                    <a href="https://t.me/Himsenghorn" target="_blank" rel="noopener noreferrer" class="text-info text-decoration-none">Telegram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =========================================
+         FLOATING TELEGRAM BUTTON (ភ្ជាប់ទៅ @Himsenghorn)
+         ========================================= -->
+    <a href="https://t.me/Himsenghorn" target="_blank" rel="noopener noreferrer" class="floating-telegram-btn" id="floatingTelegramBtn" aria-label="Chat on Telegram with Him Senghorn">
+        <div class="telegram-inner-disk">
+            <i class="fa-solid fa-paper-plane telegram-plane-icon"></i>
+        </div>
+        <span class="telegram-tooltip" id="telegramTooltip" data-i18n="telegram_tooltip">ឆាតតាម Telegram (@Himsenghorn)</span>
+    </a>
+
+    <!-- MODAL បង្ហាញគម្រោងលម្អិត (Bootstrap Modal) -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 1.5rem;">
+                <div class="modal-header border-bottom border-secondary border-opacity-25 p-4">
+                    <div>
+                        <span class="badge bg-primary bg-opacity-25 text-info px-3 py-1 mb-1" id="modalCategory">Category</span>
+                        <h4 class="modal-title fw-bold text-white" id="modalTitle">Project Title</h4>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseBtn"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <img id="modalImage" src="" alt="[រូបភាពគម្រោង]" class="w-100 rounded-3 mb-4" style="max-height: 380px; object-fit: cover;">
+                    <p class="leading-relaxed" id="modalDesc"></p>
+                    <div class="p-3 rounded-3 border mt-3" style="background: var(--bg-body); border-color: var(--border-color)!important;">
+                        <small class="text-secondary d-block mb-1" data-i18n="modal_tools_label">ឧបករណ៍/កម្មវិធីដែលបានប្រើប្រាស់:</small>
+                        <span class="text-info fw-bold" id="modalTools">Tools</span>
+                    </div>
+                </div>
+                <div class="modal-footer border-top border-secondary border-opacity-25 p-3">
+                    <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal" data-i18n="modal_btn_close">បិទ</button>
+                    <a href="#contact" class="btn btn-gradient" data-bs-dismiss="modal" data-i18n="modal_btn_action">ពិភាក្សាគម្រោងស្រដៀងគ្នានេះ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // ==========================================
+        // 1. ការគ្រប់គ្រង ACTIVE NAV LINK & CLICK COLOR
+        // ==========================================
+        const navLinks = document.querySelectorAll('.nav-menu-link');
+        const sections = document.querySelectorAll('section[id]');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                navLinks.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+
+                const navbarCollapse = document.getElementById('navbarContent');
+                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) bsCollapse.hide();
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 140;
+                const sectionHeight = section.offsetHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            if (current) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+
+        // ==========================================
+        // 2. វចនានុក្រមប្តូរភាសា (Multi-language EN/KH)
+        // ==========================================
+        const i18n = {
+            km: {
+                nav_role: "HIM SENGHORN",
+                nav_home: "ទំព័រដើម",
+                nav_about: "អំពីខ្ញុំ",
+                nav_experience: "បទពិសោធន៍",
+                nav_skills: "ជំនាញ",
+                nav_portfolio: "ស្នាដៃ",
+                nav_contact: "ទំនាក់ទំនង",
+                nav_btn_contact: "ទាក់ទងខ្ញុំ",
+                hero_badge: "ត្រៀមខ្លួនរួចរាល់សម្រាប់ការងារថ្មីៗ & Projects",
+                hero_welcome: "សូមស្វាគមន៍មកកាន់ Portfolio របស់ខ្ញុំ",
+                hero_name_prefix: "ខ្ញុំបាទឈ្មោះ",
+                hero_skills_label: "ជំនាញ:",
+                hero_description: "អ្នករចនាប្រកបដោយភាពច្នៃប្រឌិត និងភាពសកម្មខ្ពស់ មានបទពិសោធន៍លើផ្នែក <strong>Graphic Design, Photography, Video Editing</strong> និង <strong>Motion Graphics</strong>។ ជំនាញច្បាស់លាស់លើកម្មវិធី Adobe Suite និងបង្កើតស្នាដៃ Visuals ដែលមានគុណភាពកម្រិតខ្ពស់។",
+                hero_btn_work: "ទស្សនាស្នាដៃរបស់ខ្ញុំ",
+                stat_projects: "គម្រោងជោគជ័យ",
+                stat_clients: "អតិថិជនពេញចិត្ត",
+                stat_years: "ឆ្នាំ",
+                stat_exp: "បទពិសោធន៍",
+                card_subtitle: "Visual & Motion Designer",
+                card_location: "Phnom Penh, Cambodia",
+                card_education: "SETTEC Institute (3rd Year)",
+                api_quote_badge: "គំនិតបំផុសច្នៃប្រឌិតប្រចាំថ្ងៃ (Creative Inspiration Quote)",
+                api_quote_btn: "គំនិតថ្មី (New Quote)",
+                about_badge: "ប្រវត្តិរូបសង្ខេប",
+                about_title: "ផ្សំផ្គុំសិល្បៈ <span class='gradient-text'>និងបច្ចេកវិទ្យា</span>",
+                about_desc: "ខ្ញុំជាអ្នកច្នៃប្រឌិតដែលមានជំនាញច្បាស់លាស់ទាំងលើការរចនារូបភាព (Graphic Design), ការកាត់តវីដេអូកម្រិតភាពយន្ត (Cinematic Editing) និងចលនា Motion Graphics ដ៏រស់រវើក។ គោលដៅរបស់ខ្ញុំគឺជួយលើកកម្ពស់ Brand របស់លោកអ្នកឱ្យមានភាពទាក់ទាញបំផុត។",
+                hobbies_title: "ចំណូលចិត្តផ្ទាល់ខ្លួន (Hobbies)",
+                contact_phone_lbl: "លេខទូរស័ព្ទ",
+                contact_telegram_lbl: "តេលេក្រាម (Telegram)",
+                contact_email_lbl: "អ៊ីមែល",
+                contact_location_lbl: "ទីតាំងបច្ចុប្បន្ន",
+                contact_location_val: "Phnom Penh, Cambodia",
+                exp_section_badge: "ប្រវត្តិការងារ & ការអប់រំ",
+                exp_section_title: "បទពិសោធន៍ និងការសិក្សា",
+                exp_work_heading: "បទពិសោធន៍ការងារ (Work Experience)",
+                exp_edu_heading: "ប្រវត្តិនៃការសិក្សា (Education)",
+                exp_tc_role: "Graphic Designer / Video Editor / Motion Graphics",
+                exp_tc_list: "<li>រចនា Posters, Banners, Logos និងសម្ភារៈទីផ្សារ (Marketing Materials)</li><li>ថតរូបភាព និងវីដេអូសម្រាប់កម្មវិធី (Events & Promotions)</li><li>កាត់តវីដេអូ និងបង្កើត Motion Graphics សម្រាប់ Social Media</li><li>សហការជាមួយក្រុមការងារដើម្បីបង្កើត Creative Concepts ថ្មីៗ</li>",
+                exp_st3_role: "Graphic Design Intern",
+                exp_st3_list: "<li>ជួយរចនា Posters, Logos និង Print Materials សម្រាប់ក្រុមហ៊ុន</li><li>កែសម្រួលរូបភាព (Edit Photos) និងជួយគាំទ្រការផលិតវីដេអូ</li><li>រៀបចំ File សម្រាប់បោះពុម្ព (Printing) និងការផ្សព្វផ្សាយអនឡាញ</li>",
+                edu_settec_degree: "Bachelor of IT & Multimedia (3rd Year)",
+                edu_settec_desc: "កំពុងបន្តការសិក្សាថ្នាក់បរិញ្ញាបត្រឆ្នាំទី ៣ លើជំនាញបច្ចេកវិទ្យាព័ត៌មានវិទ្យា និងពហុព័ត៌មាន (IT & Multimedia) ពង្រឹងការយល់ដឹងទាំងផ្នែករចនា និងប្រព័ន្ធបច្ចេកវិទ្យា។",
+                edu_school_degree: "High School Diploma",
+                edu_school_desc: "បានបញ្ចប់ការសិក្សាកម្រិតមធ្យមសិក្សាទុតិយភូមិដោយជោគជ័យ។",
+                skills_section_badge: "ជំនាញឯកទេស",
+                skills_section_title: "កម្រិតជំនាញបច្ចេកទេស",
+                port_section_badge: "ស្នាដៃការងារ",
+                port_section_title: "គម្រោងច្នៃប្រឌិត (Projects)",
+                filter_all: "ទាំងអស់",
+                port_behance_btn: "ទស្សនាស្នាដៃបន្ថែមទាំងអស់លើ Behance",
+                contact_badge: "ទំនាក់ទំនង",
+                contact_title: "ទាក់ទងមកកាន់ខ្ញុំ",
+                contact_desc: "សូមទាក់ទងមកខ្ញុំដើម្បីពិភាក្សាអំពីគម្រោងរចនា Graphic Design, កាត់តវីដេអូ ឬ Motion Graphics។ ខ្ញុំត្រៀមខ្លួនស្វាគមន៍ជានិច្ច!",
+                form_title: "ផ្ញើសារមកកាន់ ហ៊ឹម សេងហ៊ន (HIM SENGHORN)",
+                form_subtitle: "សូមបំពេញព័ត៌មានខាងក្រោមដើម្បីពិភាក្សាគម្រោងតាម Telegram",
+                form_label_name: "ឈ្មោះរបស់អ្នក *",
+                form_label_contact: "លេខទូរស័ព្ទ ឬ អ៊ីមែល *",
+                form_label_service: "សេវាកម្មដែលអ្នកត្រូវការ",
+                form_label_details: "ព័ត៌មានលម្អិតនៃគម្រោង *",
+                form_btn_submit: "ផ្ញើសារចូល Telegram (@Himsenghorn)",
+                form_toast_success: "សារត្រូវបានរៀបចំរួចរាល់!",
+                form_toast_desc: "ប្រព័ន្ធកំពុងបើក Chat ទៅកាន់ Telegram @Himsenghorn ផ្ទាល់។",
+                footer_rights: "រក្សាសិទ្ធិគ្រប់យ៉ាង។",
+                modal_tools_label: "ឧបករណ៍/កម្មវិធីដែលបានប្រើប្រាស់:",
+                modal_btn_close: "បិទ",
+                modal_btn_action: "ពិភាក្សាគម្រោងស្រដៀងគ្នានេះ",
+                telegram_tooltip: "ឆាតតាម Telegram (@Himsenghorn)"
+            },
+            en: {
+                nav_role: "Creative Designer",
+                nav_home: "Home",
+                nav_about: "About Me",
+                nav_experience: "Experience",
+                nav_skills: "Skills",
+                nav_portfolio: "Portfolio",
+                nav_contact: "Contact",
+                nav_btn_contact: "Hire Me",
+                hero_badge: "Available for New Projects & Freelance",
+                hero_welcome: "Welcome to My Creative Portfolio",
+                hero_name_prefix: "I am",
+                hero_skills_label: "Specialized in:",
+                hero_description: "Creative and proactive designer with hands-on experience in <strong>Graphic Design, Photography, Video Editing</strong>, and <strong>Motion Graphics</strong>. Proficient in Adobe Creative Suite, dedicated to producing compelling visual narratives.",
+                hero_btn_work: "Explore My Works",
+                stat_projects: "Completed Projects",
+                stat_clients: "Happy Clients",
+                stat_years: "Years",
+                stat_exp: "Experience",
+                card_subtitle: "Visual & Motion Designer",
+                card_location: "Phnom Penh, Cambodia",
+                card_education: "SETTEC Institute (3rd Year)",
+                api_quote_badge: "Daily Creative Inspiration (Live API)",
+                api_quote_btn: "New Quote",
+                about_badge: "Profile Summary",
+                about_title: "Fusing Art <span class='gradient-text'>& Technology</span>",
+                about_desc: "A passionate visual designer committed to combining graphic design, cinematic storytelling, and dynamic motion graphics to build and elevate brands that stand out in the competitive digital landscape.",
+                hobbies_title: "Personal Hobbies",
+                contact_phone_lbl: "Phone Number",
+                contact_telegram_lbl: "Telegram",
+                contact_email_lbl: "Email Address",
+                contact_location_lbl: "Location",
+                contact_location_val: "Phnom Penh, Cambodia",
+                exp_section_badge: "Career & Education",
+                exp_section_title: "Experience & Education",
+                exp_work_heading: "Work Experience",
+                exp_edu_heading: "Educational Background",
+                exp_tc_role: "Graphic Designer / Video Editor / Motion Graphics",
+                exp_tc_list: "<li>Designed marketing posters, banners, logos, and promotional assets.</li><li>Captured high-quality event photography and commercial videography.</li><li>Edited cinematic videos and dynamic motion graphics for social channels.</li><li>Collaborated closely with creative teams to conceptualize bold ideas.</li>",
+                exp_st3_role: "Graphic Design Intern",
+                exp_st3_list: "<li>Assisted in designing brand identities, print media, and posters.</li><li>Handled photo retouching and video production support.</li><li>Prepared print-ready files and digital marketing assets.</li>",
+                edu_settec_degree: "Bachelor of IT & Multimedia (3rd Year)",
+                edu_settec_desc: "Currently pursuing 3rd year in IT & Multimedia at SETTEC Institute, building a solid foundation across interactive design and digital systems.",
+                edu_school_degree: "High School Diploma",
+                edu_school_desc: "Successfully completed High School National Diploma.",
+                skills_section_badge: "Technical Expertise",
+                skills_section_title: "Core Skills & Proficiency",
+                port_section_badge: "Featured Works",
+                port_section_title: "Creative Projects",
+                filter_all: "All",
+                port_behance_btn: "Explore All Projects on Behance",
+                contact_badge: "Get In Touch",
+                contact_title: "Let's Collaborate",
+                contact_desc: "Looking for an eye-catching graphic design, cinematic video editing, or smooth motion graphics? Reach out and let's bring your ideas to life!",
+                form_title: "Send a Message to HIM SENGHORN",
+                form_subtitle: "Fill in the details below to discuss your project via Telegram",
+                form_label_name: "Your Name *",
+                form_label_contact: "Phone or Email *",
+                form_label_service: "Service Needed",
+                form_label_details: "Project Details *",
+                form_btn_submit: "Send to Telegram (@Himsenghorn)",
+                form_toast_success: "Message Prepared Successfully!",
+                form_toast_desc: "Opening Telegram chat with @Himsenghorn...",
+                footer_rights: "All rights reserved.",
+                modal_tools_label: "Tools & Software Used:",
+                modal_btn_close: "Close",
+                modal_btn_action: "Discuss a Similar Project",
+                telegram_tooltip: "Chat on Telegram (@Himsenghorn)"
+            }
+        };
+
+        let currentLang = 'km';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.setAttribute('lang', lang);
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            const deskEN = document.getElementById('langBtnDesktopEN');
+            const deskKH = document.getElementById('langBtnDesktopKH');
+            const mobEN = document.getElementById('langBtnMobileEN');
+            const mobKH = document.getElementById('langBtnMobileKH');
+
+            if (lang === 'en') {
+                deskEN?.classList.add('active');
+                deskKH?.classList.remove('active');
+                mobEN?.classList.add('active');
+                mobKH?.classList.remove('active');
+            } else {
+                deskKH?.classList.add('active');
+                deskEN?.classList.remove('active');
+                mobKH?.classList.add('active');
+                mobEN?.classList.remove('active');
+            }
+        }
+
+        // ==========================================
+        // 3. ប្រព័ន្ធគ្រប់គ្រង Light / Dark Mode Toggle
+        // ==========================================
+        let currentTheme = 'dark';
+
+        function applyTheme(theme) {
+            currentTheme = theme;
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            const themeIcon = document.getElementById('themeIcon');
+            const themeIconMobile = document.getElementById('themeIconMobile');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+            if (theme === 'light') {
+                if (themeIcon) themeIcon.className = 'fa-solid fa-moon text-primary fs-5 theme-icon-rotate';
+                if (themeIconMobile) themeIconMobile.className = 'fa-solid fa-moon text-primary fs-6 theme-icon-rotate';
+                if (modalCloseBtn) modalCloseBtn.classList.remove('btn-close-white');
+            } else {
+                if (themeIcon) themeIcon.className = 'fa-solid fa-sun text-warning fs-5 theme-icon-rotate';
+                if (themeIconMobile) themeIconMobile.className = 'fa-solid fa-sun text-warning fs-6 theme-icon-rotate';
+                if (modalCloseBtn) modalCloseBtn.classList.add('btn-close-white');
+            }
+        }
+
+        function toggleTheme() {
+            const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(nextTheme);
+        }
+
+        const themeBtnDesktop = document.getElementById('themeToggleBtn');
+        const themeBtnMobile = document.getElementById('themeToggleBtnMobile');
+
+        if (themeBtnDesktop) themeBtnDesktop.addEventListener('click', toggleTheme);
+        if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
+
+        applyTheme('dark');
+
+        // ==========================================
+        // 4. ចាប់ផ្ដើមដំណើរការ AOS (Animate On Scroll)
+        // ==========================================
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic'
+        });
+
+        // ==========================================
+        // 5. Typewriter Effect
+        // ==========================================
+        const roles = [
+            "Graphic Designer",
+            "Video Editor",
+            "Motion Graphics Artist",
+            "Creative Visualizer"
+        ];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById("typewriter");
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            if (isDeleting) {
+                typewriterEl.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterEl.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? 40 : 100;
+            if (!isDeleting && charIndex === currentRole.length) {
+                speed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                speed = 400;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+        document.addEventListener("DOMContentLoaded", typeEffect);
+
+        // ==========================================
+        // 6. Interactive Particles Canvas Animation
+        // ==========================================
+        const canvas = document.getElementById("particleCanvas");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.8 - 0.4;
+                this.speedY = Math.random() * 0.8 - 0.4;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                const isLight = currentTheme === 'light';
+                ctx.fillStyle = isLight ? 'rgba(0, 112, 243, 0.45)' : 'rgba(0, 210, 255, 0.4)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(window.innerWidth / 15, 60);
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isLight = currentTheme === 'light';
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.hypot(dx, dy);
+                    if (distance < 110) {
+                        const alpha = isLight ? (0.2 - distance / 700) : (0.15 - distance / 800);
+                        ctx.strokeStyle = isLight 
+                            ? `rgba(0, 112, 243, ${Math.max(alpha, 0)})` 
+                            : `rgba(0, 210, 255, ${Math.max(alpha, 0)})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ==========================================
+        // 7. Numbers Counter Animation on Scroll
+        // ==========================================
+        let counterDone = false;
+        function runCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const step = Math.ceil(target / 40);
+                const timer = setInterval(() => {
+                    count += step;
+                    if (count >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = count;
+                    }
+                }, 35);
+            });
+        }
+
+        // ==========================================
+        // 8. Skill Progress Bars Animation on Scroll
+        // ==========================================
+        const skillsSection = document.getElementById('skills');
+        let skillsAnimated = false;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (!skillsAnimated) {
+                        document.querySelectorAll('.custom-progress-bar').forEach(bar => {
+                            bar.style.width = bar.getAttribute('data-progress');
+                        });
+                        skillsAnimated = true;
+                    }
+                    if (!counterDone) {
+                        runCounters();
+                        counterDone = true;
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(skillsSection);
+
+        // ==========================================
+        // 9. LIVE API Integration: គំនិតច្នៃប្រឌិត (Quote API)
+        // ==========================================
+        async function fetchInspirationalQuote() {
+            const quoteContentEl = document.getElementById('apiQuoteContent');
+            const quoteAuthorEl = document.getElementById('apiQuoteAuthor');
+            const spinIcon = document.getElementById('quoteSpinIcon');
+            const btn = document.getElementById('fetchQuoteBtn');
+
+            spinIcon.classList.add('fa-spin');
+            btn.disabled = true;
+
+            try {
+                const response = await fetch('https://dummyjson.com/quotes/random');
+                if (!response.ok) throw new Error('API Request Failed');
+                const data = await response.json();
+
+                quoteContentEl.textContent = data.quote;
+                quoteAuthorEl.textContent = `— ${data.author}`;
+            } catch (error) {
+                const fallbackQuotes = [
+                    { quote: "Design is not just what it looks like and feels like. Design is how it works.", author: "Steve Jobs" },
+                    { quote: "Creativity is intelligence having fun.", author: "Albert Einstein" },
+                    { quote: "Simplicity is the ultimate sophistication in motion & design.", author: "Leonardo da Vinci" }
+                ];
+                const randomFallback = fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+                quoteContentEl.textContent = randomFallback.quote;
+                quoteAuthorEl.textContent = `— ${randomFallback.author}`;
+            } finally {
+                spinIcon.classList.remove('fa-spin');
+                btn.disabled = false;
+            }
+        }
+        fetchInspirationalQuote();
+
+        // ==========================================
+        // 10. Portfolio Filtering System
+        // ==========================================
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ==========================================
+        // 11. Project Detail Modal Handler
+        // ==========================================
+        let projectModalInstance = null;
+        function openProjectModal(title, category, desc, img, tools) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalCategory').textContent = category;
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('modalImage').src = img;
+            document.getElementById('modalTools').textContent = tools;
+
+            if (!projectModalInstance) {
+                projectModalInstance = new bootstrap.Modal(document.getElementById('projectModal'));
+            }
+            projectModalInstance.show();
+        }
+
+        // ==========================================
+        // 12. ដំណើរការផ្ញើសារចូល TELEGRAM @Himsenghorn ផ្ទាល់
+        // ==========================================
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('senderName').value.trim();
+            const contact = document.getElementById('senderContact').value.trim();
+            const service = document.getElementById('senderService').value;
+            const message = document.getElementById('senderMessage').value.trim();
+
+            // រៀបចំសារស្អាតសម្រាប់ផ្ញើទៅ Telegram @Himsenghorn
+            const textMessage = `📩 *សារគម្រោងថ្មីពីគេហទំព័រ Portfolio*%0A%0A` +
+                                `👤 *ឈ្មោះភ្ញៀវ:* ${encodeURIComponent(name)}%0A` +
+                                `📞 *ទំនាក់ទំនង:* ${encodeURIComponent(contact)}%0A` +
+                                `🎨 *សេវាកម្ម:* ${encodeURIComponent(service)}%0A` +
+                                `📝 *ព័ត៌មានលម្អិត:* ${encodeURIComponent(message)}`;
+
+            // បង្ហាញផ្ទាំង Toast ជូនដំណឹង
+            const toast = document.getElementById('formSuccessToast');
+            toast.classList.remove('d-none');
+            toast.classList.add('d-flex');
+
+            // បើក Telegram ទៅកាន់ username @Himsenghorn ផ្ទាល់
+            setTimeout(() => {
+                window.open(`https://t.me/Himsenghorn?text=${textMessage}`, '_blank');
+            }, 700);
+
+            event.target.reset();
+
+            setTimeout(() => {
+                toast.classList.add('d-none');
+                toast.classList.remove('d-flex');
+            }, 7000);
+        }
+    </script>
+</body>
+</html>
